@@ -12,9 +12,10 @@
   --hero-background: rgba(46, 47, 66, 0.7);
   --white-background: rgba(255, 255, 255, 1);
   --modal-background: rgba(252, 252, 252, 1);
+  --modal-overlay: rgba(46, 47, 66, 0.4);
   --customers-icon: rgba(175, 177, 184, 1);
   --footer-social-media: #ffffff;
-  --modal-index: ;
+  --modal-idx: 100;
 }
 
 body {
@@ -259,8 +260,25 @@ button {
 }
 
 .portfolio-list-item {
+  position: relative;
   flex-basis: calc((100% - 48px) / 3);
   border: 1px solid #e7e9fc;
+}
+
+.portfolio-card-text {
+  position: absolute;
+  opacity: 0;
+  color: var(--light);
+  width: 100%;
+  height: 100%;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  text-transform: none;
+  letter-spacing: 0.02em;
+  padding: 40px 32px;
 }
 
 .our-products {
@@ -271,6 +289,24 @@ button {
 .our-products:focus {
   box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08),
     0px 1px 1px rgba(46, 47, 66, 0.16), 0px 2px 1px rgba(46, 47, 66, 0.08);
+  transition-property: box-shadow;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.our-products:hover::before,
+.portfolio-card-text:hover {
+  opacity: 1;
+}
+
+.our-products::before {
+  position: absolute;
+  display: inline-block;
+  content: '';
+  width: 100%;
+  height: 300px;
+  background-color: var(--primary-brand);
+  opacity: 0;
 }
 
 .portfolio-images-description {
@@ -554,22 +590,45 @@ button {
 }
 
 /* modal */
+
 .backdrop {
   position: fixed;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(46, 47, 66, 0.4);
+
+  width: 100%;
+  height: 100%;
+
+  background-color: var(--modal-overlay);
+}
+
+.backdrop.is-hidden {
+  opacity: 0;
+  pointer-events: none;
 }
 
 .modal {
+  position: absolute;
+  width: 408px;
+  height: 576px;
   background: #fcfcfc;
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12),
     0px 2px 1px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
-  width: 408px;
-  height: 576px;
-  top: calc(50%-204px);
-  left: calc(50%-288px);
+  top: calc(50% - 288px);
+  left: calc(50% - 204px);
+}
+
+.modal-btn {
+  margin: 24px 24px 528px 360px;
+  background: #e7e9fc;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+}
+
+.modal-icon {
+  fill: currentColor;
 }

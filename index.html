@@ -63,7 +63,7 @@
       <section class="hero-section">
         <div class="container">
           <h1 class="main-title">Effective Solutions for Your Business</h1>
-          <button class="button-order button" type="button">
+          <button data-modal-open class="button-order button" type="button">
             Order Service
           </button>
         </div>
@@ -434,14 +434,15 @@
     </footer>
 
     <!-- modal window -->
-    <div class="backdrop">
+    <div class="backdrop" data-modal>
       <div class="modal">
-        <button class="modal-btn">
-          <svg>
-            <use></use>
+        <button data-modal-close class="modal-btn" type="button">
+          <svg class="modal-icon" width="8" height="8">
+            <use href="./images/icon.svg#icon-close"></use>
           </svg>
         </button>
       </div>
     </div>
+    <script src="./js/modal.js"></script>
   </body>
 </html>
