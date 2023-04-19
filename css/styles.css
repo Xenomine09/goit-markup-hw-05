@@ -302,7 +302,7 @@ button {
 .our-products::before {
   position: absolute;
   display: inline-block;
-  content: '';
+  content: "";
   width: 100%;
   height: 300px;
   background-color: var(--primary-brand);
@@ -365,14 +365,6 @@ button {
   letter-spacing: 0.03em;
 }
 
-.link:hover {
-  color: #404bbf;
-}
-
-.link:focus {
-  color: #404bbf;
-}
-
 .button:hover {
   background-color: #404bbf;
 }
@@ -409,6 +401,37 @@ button {
   line-height: 1.5;
   letter-spacing: 0.02em;
   padding: 24px 0;
+}
+
+.main-nav.current-page{
+  position: relative;
+  display: block;
+  padding-top: 24px;
+  padding-bottom: 24px;
+}
+
+.current-page.portfolio::after {
+  width: 66px;
+}
+
+.current-page.studio::after {
+  width: 48px;
+}
+
+.main-nav.current-page::after {
+  display: inline-block;
+  position: absolute;
+  content: '';
+  height: 4px;
+  left: 0px;
+  bottom: -1px;
+  background: var(--pressed-state);
+  border-radius: 2px;
+}
+
+.main-nav:hover,
+.main-nav:focus{
+  color: #404bbf;
 }
 
 .contact-nav {
