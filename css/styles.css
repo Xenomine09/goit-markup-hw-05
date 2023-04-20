@@ -123,6 +123,8 @@ body {
   height: 100%;
   align-items: center;
   justify-content: center;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .social.team:hover,
@@ -173,7 +175,7 @@ body {
   color: #2e2f42;
 }
 
-.customers.item {
+.customers {
   width: 168px;
   height: 88px;
 }
@@ -188,6 +190,8 @@ body {
   justify-content: center;
   color: #8e8f99;
   padding: 16px 32px;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .customers.list {
@@ -228,11 +232,6 @@ ul {
   padding-left: 0;
 }
 
-button {
-  font-family: inherit;
-  color: currentColor;
-  cursor: pointer;
-}
 /* reset end */
 
 /* portfolio main */
@@ -252,6 +251,11 @@ button {
   margin-bottom: 72px;
 }
 
+.portfolio-img-wrap {
+  overflow: hidden;
+  position: relative;
+}
+
 .portfolio-images-list {
   display: flex;
   flex-wrap: wrap;
@@ -262,25 +266,37 @@ button {
 .portfolio-list-item {
   position: relative;
   flex-basis: calc((100% - 48px) / 3);
-  border: 1px solid #e7e9fc;
 }
 
 .portfolio-card-text {
   position: absolute;
-  opacity: 0;
-  color: var(--light);
+  left: 0;
+  top: 0;
   width: 100%;
   height: 100%;
-  font-family: "Roboto";
+  padding: 40px 32px;
+  overflow-y: auto;
+  transform: translate(0, 100%);
   font-style: normal;
   font-weight: 400;
-  font-size: 16px;
-  line-height: 1.5;
+  text-align: left;
+  background-color: var(--primary-brand);
+  color: var(--light);
   text-transform: none;
-  letter-spacing: 0.02em;
-  padding: 40px 32px;
 }
 
+.our-products:hover::before,
+.portfolio-card-text:hover {
+  opacity: 1;
+}
+
+.our-products:hover .portfolio-card-text,
+.our-products:focus .portfolio-card-text {
+  transform: translate(0, 0);
+  transition-property: transform;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
 .our-products {
   display: block;
 }
@@ -289,30 +305,17 @@ button {
 .our-products:focus {
   box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08),
     0px 1px 1px rgba(46, 47, 66, 0.16), 0px 2px 1px rgba(46, 47, 66, 0.08);
-  transition-property: box-shadow;
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.our-products:hover::before,
-.portfolio-card-text:hover {
-  opacity: 1;
-}
-
-.our-products::before {
-  position: absolute;
-  display: inline-block;
-  content: "";
-  width: 100%;
-  height: 300px;
-  background-color: var(--primary-brand);
-  opacity: 0;
 }
 
 .portfolio-images-description {
   padding: 32px 16px;
   border-top: none;
   text-decoration: none;
+  border-bottom: 1px solid #e7e9fc;
+  border-right: 1px solid #e7e9fc;
+  border-left: 1px solid #e7e9fc;
 }
 
 .product-p-description {
@@ -379,6 +382,8 @@ button {
   border: 1px solid transparent;
   box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 2px 1px rgba(0, 0, 0, 0.08),
     0px 2px 2px rgba(0, 0, 0, 0.12);
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .address {
@@ -394,16 +399,14 @@ button {
   color: var(--dark);
   text-decoration: none;
   text-transform: capitalize;
-  font-family: "Roboto";
   font-style: normal;
   font-weight: 500;
-  font-size: 16px;
-  line-height: 1.5;
-  letter-spacing: 0.02em;
   padding: 24px 0;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.main-nav.current-page{
+.main-nav.current-page {
   position: relative;
   display: block;
   padding-top: 24px;
@@ -411,17 +414,17 @@ button {
 }
 
 .current-page.portfolio::after {
-  width: 66px;
+  width: 100%;
 }
 
 .current-page.studio::after {
-  width: 48px;
+  width: 100%;
 }
 
 .main-nav.current-page::after {
   display: inline-block;
   position: absolute;
-  content: '';
+  content: "";
   height: 4px;
   left: 0px;
   bottom: -1px;
@@ -430,20 +433,15 @@ button {
 }
 
 .main-nav:hover,
-.main-nav:focus{
+.main-nav:focus {
   color: #404bbf;
 }
 
 .contact-nav {
   text-decoration: none;
   color: inherit;
-  text-transform: lowercase;
-  font-family: "Roboto";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 1.5;
-  letter-spacing: 0.02em;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .contact-nav:hover {
@@ -456,8 +454,6 @@ button {
 }
 
 .button {
-  font-family: "Roboto", sans-serif;
-  font-size: 16px;
   line-height: 1.5;
   color: var(--primary-brand);
   background-color: var(--light);
@@ -473,10 +469,7 @@ button {
   display: block;
   min-width: 169px;
   height: 56px;
-  font-family: "Roboto", sans-serif;
   font-weight: 500;
-  font-size: 16px;
-  line-height: 1.5;
   letter-spacing: 0.04em;
   color: var(--white-text);
   background-color: var(--primary-brand);
@@ -486,6 +479,16 @@ button {
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
   border-radius: 4px;
   margin: 0 auto;
+  transition-property: background-color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.button-order:hover {
+  background-color: #404bbf;
+}
+.button-order:focus {
+  background-color: #404bbf;
 }
 
 .list-item {
@@ -588,6 +591,8 @@ button {
   justify-content: center;
   cursor: pointer;
   background-color: var(--primary-brand);
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .footer-social-link:hover,
@@ -638,18 +643,23 @@ button {
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12),
     0px 2px 1px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
-  top: calc(50% - 288px);
-  left: calc(50% - 204px);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 24px;
 }
 
 .modal-btn {
-  margin: 24px 24px 528px 360px;
   background: #e7e9fc;
   border: 1px solid rgba(0, 0, 0, 0.1);
   box-sizing: border-box;
   border-radius: 50%;
   width: 24px;
   height: 24px;
+  display: flex;
+  margin-left: auto;
+  align-items: center;
+  justify-content: center;
 }
 
 .modal-icon {
